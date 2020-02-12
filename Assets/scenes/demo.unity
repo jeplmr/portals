@@ -212,9 +212,9 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4288443}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &73414917 stripped
+--- !u!114 &73414916 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4800056064042434694, guid: f0034a953053a474f9b815e867f5a762,
+  m_CorrespondingSourceObject: {fileID: 73414916, guid: f0034a953053a474f9b815e867f5a762,
     type: 3}
   m_PrefabInstance: {fileID: 4800056063977437571}
   m_PrefabAsset: {fileID: 0}
@@ -222,6 +222,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f78a14623f0b5414a8fe5e63a2b2b5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &98208966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1875651863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &98208967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98208966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecc90af52d5cde45a64c3376a51de5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &106338116
@@ -592,6 +610,12 @@ Transform:
   m_Father: {fileID: 1383981608}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 75, z: 0}
+--- !u!23 &228008561 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4800056063146433814, guid: f0034a953053a474f9b815e867f5a762,
+    type: 3}
+  m_PrefabInstance: {fileID: 236027267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &236027267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -663,12 +687,28 @@ PrefabInstance:
         type: 3}
       propertyPath: linkedPortal
       value: 
-      objectReference: {fileID: 73414917}
+      objectReference: {fileID: 0}
+    - target: {fileID: 848831635, guid: f0034a953053a474f9b815e867f5a762, type: 3}
+      propertyPath: linkedPortal
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 848831635, guid: f0034a953053a474f9b815e867f5a762, type: 3}
+      propertyPath: screen
+      value: 
+      objectReference: {fileID: 228008561}
+    - target: {fileID: 73414916, guid: f0034a953053a474f9b815e867f5a762, type: 3}
+      propertyPath: screen
+      value: 
+      objectReference: {fileID: 228008561}
+    - target: {fileID: 73414916, guid: f0034a953053a474f9b815e867f5a762, type: 3}
+      propertyPath: linkedPortal
+      value: 
+      objectReference: {fileID: 73414916}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0034a953053a474f9b815e867f5a762, type: 3}
 --- !u!114 &236027268 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4800056064042434694, guid: f0034a953053a474f9b815e867f5a762,
+  m_CorrespondingSourceObject: {fileID: 73414916, guid: f0034a953053a474f9b815e867f5a762,
     type: 3}
   m_PrefabInstance: {fileID: 236027267}
   m_PrefabAsset: {fileID: 0}
@@ -1046,6 +1086,12 @@ Transform:
   m_Father: {fileID: 1383981608}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -30.000002, z: 0}
+--- !u!23 &848831637 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4800056063146433814, guid: f0034a953053a474f9b815e867f5a762,
+    type: 3}
+  m_PrefabInstance: {fileID: 4800056063977437571}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &960544169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,8 +1595,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4800056064042434694, guid: f0034a953053a474f9b815e867f5a762,
-        type: 3}
+    - target: {fileID: 73414916, guid: f0034a953053a474f9b815e867f5a762, type: 3}
+      propertyPath: screen
+      value: 
+      objectReference: {fileID: 848831637}
+    - target: {fileID: 73414916, guid: f0034a953053a474f9b815e867f5a762, type: 3}
       propertyPath: linkedPortal
       value: 
       objectReference: {fileID: 236027268}

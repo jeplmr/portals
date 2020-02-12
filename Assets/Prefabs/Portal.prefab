@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4800056063146433814}
   - component: {fileID: 4800056063146433815}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4800056064042434695}
-  - component: {fileID: 4800056064042434694}
+  - component: {fileID: 73414916}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -199,7 +199,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4800056064042434694
+--- !u!114 &73414916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,4 +212,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedPortal: {fileID: 0}
-  screen: {fileID: 4800056063146433814}
+  screen: {fileID: 0}
