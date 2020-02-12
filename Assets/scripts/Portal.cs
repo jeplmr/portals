@@ -20,54 +20,63 @@ public class Portal : MonoBehaviour
         trackedTravellers = new List<PortalTraveller>(); 
     }
     
-    void Update(){
-        CreateViewTexture(); 
-        Render(); 
-    }
 
-    void LateUpdate(){
+
+    void LateUpdate(){      
         for(int i = 0; i < trackedTravellers.Count; i++){
             PortalTraveller traveller = trackedTravellers[i];
             Transform travellerT = traveller.transform;
 
             Vector3 offsetFromPortal = travellerT.position - transform.position; 
             int portalSide = System.Math.Sign(Vector3.Dot(offsetFromPortal, transform.forward)); 
-            int portalSideOld = System.Math.Sign(Vector3.Dot(traveller.previousOffsetFromPortal, transform.forward)); 
+            int portalSideOld = System.Math.Sign(Vector3.Dot(traveller.previousOffsetFromPortal, transform.forward));
             //Teleport the traveller if it has crossed from one side of the portal to the other
             if(portalSide != portalSideOld){
-                var m = linkedPortal.transform.localToWorldMatrix * transform.worldToLocalMatrix * travellerT.localToWorldMatrix; 
-                traveller.Teleport(transform, linkedPortal.transform, m.GetColumn(3), m.rotation); 
-
+                var m = linkedPortal.transform.localToWorldMatrix * transform.worldToLocalMatrix * travellerT.localToWorldMatrix;
+                traveller.Teleport(transform, linkedPortal.transform, m.GetColumn(3), m.rotation);
                 linkedPortal.OnTravellerEnterPortal(traveller);
                 trackedTravellers.RemoveAt(i);
-                i--;  
+                i--;
             } else {
                 traveller.previousOffsetFromPortal = offsetFromPortal; 
             }
         }
+        Render();
+    }
+
+    //Sets the thickness of the portal screen so as not to clip with camera near plane with player goes through
+    void ProtectScreenFromClipping(){
+        float halfHeight = playerCam.nearClipPlane * Mathf.Tan(playerCam.fieldOfView * 0.5f * Mathf.Deg2Rad);
+        float halfWidth = halfHeight * playerCam.aspect; 
+        float dstToNearClipPlaneCorner = new Vector3(halfWidth, halfHeight, playerCam.nearClipPlane).magnitude; 
+
+        Transform screenT = screen.transform; 
+        bool camFacingSameDirAsPortal = Vector3.Dot(transform.forward, transform.position - playerCam.transform.position) > 0;
+        screenT.localScale = new Vector3(screenT.localScale.x, screenT.localScale.y, dstToNearClipPlaneCorner);
+        screenT.localPosition = Vector3.forward * dstToNearClipPlaneCorner * ((camFacingSameDirAsPortal) ? 0.5f : -0.5f); 
     }
 
     void OnTravellerEnterPortal(PortalTraveller traveller){
         if(!trackedTravellers.Contains (traveller)){
-            traveller.EnterPortalThreshold(); 
+            traveller.EnterPortalThreshold();
             traveller.previousOffsetFromPortal = traveller.transform.position - transform.position; 
-            trackedTravellers.Add(traveller); 
+            trackedTravellers.Add(traveller);
+            ProtectScreenFromClipping(); 
         }
     }
 
-    
     void OnTriggerEnter(Collider other){
         var traveller = other.GetComponent<PortalTraveller>();
-        if(traveller){
-            OnTravellerEnterPortal(traveller); 
+        if(traveller){ 
+            OnTravellerEnterPortal(traveller);
         }
     }
 
     void OnTriggerExit(Collider other){
         var traveller = other.GetComponent<PortalTraveller>();
         if(traveller && trackedTravellers.Contains (traveller)){
-            traveller.ExitPortalThreshold(); 
-            trackedTravellers.Remove(traveller); 
+            traveller.ExitPortalThreshold();
+            trackedTravellers.Remove(traveller);
         }   
     }
 
